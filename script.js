@@ -235,6 +235,33 @@
     if (stage) stage.addEventListener('click', openInvitation);
   }
 
+  /* ───────────── fit text inside the framed cards (never overflow the artwork) ───────────── */
+  const FIT_BOXES = '.eng__in,.wcer__in,.rec__in';
+  function fitBoxes() {
+    d.querySelectorAll(FIT_BOXES).forEach(box => {
+      const need = () => {                     // content height, ignoring reveal transforms
+        let top = Infinity, bottom = -Infinity;
+        for (const k of box.children) {
+          if (!k.offsetHeight) continue;
+          const cs = getComputedStyle(k);
+          top = Math.min(top, k.offsetTop - parseFloat(cs.marginTop));
+          bottom = Math.max(bottom, k.offsetTop + k.offsetHeight + parseFloat(cs.marginBottom));
+        }
+        return bottom - top;
+      };
+      let f = 1;
+      box.style.setProperty('--fit', '1');
+      for (let i = 0; i < 14 && need() > box.clientHeight && f > 0.68; i++) {
+        f -= 0.03; box.style.setProperty('--fit', f.toFixed(2));
+      }
+    });
+  }
+  fitBoxes();
+  if (d.fonts && d.fonts.ready) d.fonts.ready.then(fitBoxes);
+  addEventListener('load', fitBoxes);
+  let fitT = 0;
+  addEventListener('resize', () => { clearTimeout(fitT); fitT = setTimeout(fitBoxes, 150); });
+
   /* ───────────── venue links ───────────── */
   d.querySelectorAll('a[data-map]').forEach(a => {
     const url = CONFIG.maps[a.dataset.map];

@@ -34,3 +34,8 @@ Confirmed as **2027**, the same year as the engagement (9 January 2027 is a Satu
 - **Exact map links**: `CONFIG.maps` in `script.js` (`engagement`, `reception`, `wedding`, `weddingReception`; empty = Google Maps search links in `index.html`).
 - **Calendar**: start times only; no end times are invented.
 - WhatsApp preview image: `assets/share-engagement-wedding-2027.jpg` (1200×630, used by `og:image` / `twitter:image`) lists both celebrations. `assets/share.jpg` is the same image, kept for old links. If you change the preview again, save it under a new file name and update both tags, because apps cache previews by image URL; the previous engagement-only version is kept as `assets/share-engagement-original.jpg`. Re-share the link after deploying, because WhatsApp caches previews.
+
+## Mobile / scrolling
+- Free, momentum scrolling (no scroll-snap); smooth scrolling for in-page links, page dots and Back to Top.
+- Text inside the framed cards (ceremony frames, reception cards) is sized to the frame, and `script.js` shrinks it slightly (`--fit`) if it would ever overflow the artwork on a very small or short screen. Checked at 320×568, 360×640, 375×667, 360×780, 390×844 and 412×915.
+- The fixed background sits on its own GPU layer and the music button has no backdrop blur, both to avoid stutter while scrolling on phones.
