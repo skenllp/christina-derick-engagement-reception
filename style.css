@@ -294,6 +294,10 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;transform:translateZ(0
 .close__dates .close__date{margin:.6rem -.34em 0 0}
 .close__date b{font-weight:400;margin:0 .1em;color:var(--gold)}
 .tools{display:flex;flex-wrap:wrap;justify-content:center;gap:.8rem}
+.credit{margin-top:1.8rem;font:400 .66rem/1 var(--sans);letter-spacing:.24em;margin-right:-.24em;text-transform:uppercase;color:rgba(239,230,216,.6)}
+.credit a{color:var(--gold-l);text-decoration:none;border-bottom:1px solid rgba(220,199,158,.4);padding:.5rem 0 .15rem;transition:color .3s,border-color .3s}
+.credit a:hover{color:var(--ivory);border-color:var(--gold-l)}
+.credit a:focus-visible{outline:2px solid var(--gold-l);outline-offset:4px}
 .close__orch{position:absolute;bottom:-2%;width:min(56vw,300px);pointer-events:none;filter:drop-shadow(0 8px 12px rgba(0,0,0,.45))}
 .close__orch--r{right:-6%}
 .close__orch--l{left:-6%;transform:scaleX(-1)}
