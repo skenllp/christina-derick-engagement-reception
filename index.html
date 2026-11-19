@@ -3,114 +3,373 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Christina &amp; Derick — Engagement Invitation</title>
-<meta name="description" content="Mrs. Shiny Cherian &amp; Mr. Cherian Joseph request your gracious presence for the engagement ceremony of Christina Cherian &amp; Derick Mathew, Saturday, 02 January 2027.">
+<title>Christina &amp; Derick — Engagement &amp; Wedding Invitation</title>
+<meta name="description" content="Christina Cherian &amp; Derick Mathew — Engagement on Saturday, 02 January 2027 at St. Thomas Syro Malabar Church, North Paravur, with reception at One Kochi, Nedumbassery · Holy Matrimony on Saturday, 9 January 2027 at St. Joseph Syro Malabar Church, Punnakunnam, with reception at Vijaya International Convention Centre, Thiruvalla.">
 <meta name="theme-color" content="#2a0a0e">
+
+<!-- ============================================================
+     PRODUCTION DOMAIN — edit the three URLs below (canonical, og:url,
+     og:image) and twitter:image. script.js reads og:url for sharing.
+     Currently set to the existing deployment; replace if the final
+     public address changes.
+     WEDDING YEAR — confirmed as 2027 (same year as the engagement).
+     It is set in CONFIG.wedding.year in script.js and written into the
+     texts below.
+     ============================================================ -->
+<link rel="canonical" href="https://christina-derick-engagement-recepti.vercel.app/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Christina &amp; Derick — Engagement Invitation">
-<meta property="og:description" content="Saturday, 02 January 2027 · St. Thomas Syro Malabar Church, North Paravur">
-<!-- When a share image exists, add: <meta property="og:image" content="https://YOUR-DOMAIN/assets/share.jpg"> -->
+<meta property="og:site_name" content="Christina &amp; Derick">
+<meta property="og:title" content="Christina &amp; Derick — Engagement &amp; Wedding Invitation">
+<meta property="og:description" content="Engagement · Saturday, 02 January 2027 · North Paravur, reception at One Kochi · Holy Matrimony · Saturday, 9 January 2027 · Punnakunnam, reception at Vijaya International Convention Centre, Thiruvalla">
+<meta property="og:url" content="https://christina-derick-engagement-recepti.vercel.app/">
+<meta property="og:image" content="https://christina-derick-engagement-recepti.vercel.app/assets/share.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Christina Cherian &amp; Derick Mathew — Engagement, Saturday, 02 January 2027 · Holy Matrimony, Saturday, 9 January 2027">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Christina &amp; Derick — Engagement &amp; Wedding Invitation">
+<meta name="twitter:description" content="Engagement · Sat, 02 January 2027 · North Paravur · Holy Matrimony · Sat, 9 January 2027 · Punnakunnam, Alappuzha">
+<meta name="twitter:image" content="https://christina-derick-engagement-recepti.vercel.app/assets/share.jpg">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@400;500&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="assets/bg-emboss.webp">
-<script>document.documentElement.classList.add('js')</script>
+<link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Jost:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/images/invitation-background.webp">
+<script>
+  document.documentElement.classList.add('js');
+  /* Intro already seen in this tab? Skip it before first paint (no flash). */
+  try { if (sessionStorage.getItem('cd-intro-seen') === '1') document.documentElement.classList.add('skip-intro'); } catch (e) {}
+</script>
 <link rel="stylesheet" href="style.css">
 <script defer src="script.js"></script>
 </head>
 <body>
-<svg width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute"><filter id="deckle" x="-2%" y="-1%" width="104%" height="102%"><feTurbulence type="fractalNoise" baseFrequency=".04" numOctaves="3" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="6"/></filter></svg>
+<svg width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute">
+  <filter id="deckle" x="-2%" y="-1%" width="104%" height="102%"><feTurbulence type="fractalNoise" baseFrequency=".04" numOctaves="3" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="6"/></filter>
+</svg>
 
+<!-- ═════════════ 01 · OPENING ENVELOPE ═════════════ -->
 <div id="intro" class="intro" role="dialog" aria-modal="true" aria-label="Open the invitation">
-  <video id="introVideo" class="intro__video" muted playsinline preload="none" hidden></video>
-  <div class="intro__inner">
-    <div class="stage">
-      <div class="env" id="env">
-        <div class="env__back"></div>
-        <div class="env__card" aria-hidden="true">
-          <p class="ec__lab">Engagement</p>
-          <p class="ec__n">Christina</p><p class="ec__amp">&amp;</p><p class="ec__n">Derick</p>
-        </div>
-        <div class="env__front"><i></i></div>
-        <div class="env__flap"><div class="flap__face flap__out"></div><div class="flap__face flap__in"></div></div>
-        <div class="env__seal" id="sealBtn" aria-hidden="true"><div class="seal"><img src="assets/seal.webp" alt="" width="480" height="439"><span class="seal__mono">C&amp;D</span></div></div>
-      </div>
+  <!-- 9:16 frame: shows the video's FIRST FRAME as the opening backdrop, then plays it.
+       .intro__card sits exactly on the blank ivory card of the final frame. -->
+  <div class="intro__frame" id="introFrame" aria-hidden="true">
+    <video id="introVideo" class="intro__video" muted playsinline preload="auto" poster="assets/video/poster.jpg" tabindex="-1">
+      <source src="assets/video/envelope-open.mp4" type="video/mp4">
+    </video>
+    <div class="intro__card">
+      <p class="ic__n">Christina</p>
+      <p class="ic__amp">&amp;</p>
+      <p class="ic__n">Derick</p>
+      <div class="ic__rule"></div>
+      <p class="ic__ev"><span>Engagement</span> 02 · 01 · 2027</p>
+      <p class="ic__ev"><span>Holy Matrimony</span> 09 · 01 · 2027</p>
     </div>
-    <div class="intro__ui">
-      <p class="intro__names">Christina &amp; Derick</p>
-      <p class="intro__sub">Engagement invitation</p>
+  </div>
+
+  <!-- CSS envelope: shown ONLY if the video is missing or cannot play -->
+  <div class="stage" id="stage" aria-hidden="true" hidden>
+    <div class="env" id="env">
+      <div class="env__back"></div>
+      <div class="env__card">
+        <p class="ec__lab">Invitation</p>
+        <p class="ec__n">Christina</p><p class="ec__amp">&amp;</p><p class="ec__n">Derick</p>
+      </div>
+      <div class="env__front"><i></i></div>
+      <div class="env__flap"><div class="flap__face flap__out"></div><div class="flap__face flap__in"></div></div>
+      <div class="env__seal"><div class="seal"><img src="assets/images/seal.webp" alt="" width="480" height="439"><span class="seal__mono">C&amp;D</span></div></div>
+    </div>
+  </div>
+
+  <div class="intro__ui" id="introUi">
+    <div class="intro__top">
+      <p class="intro__sub">Engagement &amp; Holy Matrimony</p>
+      <p class="intro__names"><span>Christina</span> <i>&amp;</i> <span>Derick</span></p>
+      <p class="intro__dates">02 · 01 · 2027 <b>&amp;</b> 09 · 01 · 2027</p>
+    </div>
+    <div class="intro__bottom">
       <button id="openBtn" class="btn" type="button">Open Invitation</button>
-      <button id="skipBtn" class="link" type="button">Skip intro</button>
+      <button id="skipBtn" class="link" type="button">Skip Intro</button>
     </div>
   </div>
 </div>
 
-<div class="bg" aria-hidden="true"></div>
-
 <main id="invite" tabindex="-1">
-  <section class="suite" aria-labelledby="names">
-    <article class="card r" style="--d:.15s">
-      <div class="card__paper"></div>
-      <div class="card__emboss"></div>
-      <div class="seal"><img src="assets/seal.webp" alt="" width="480" height="439"><span class="seal__mono">C&amp;D</span></div>
-      <div class="card__body">
-        <p class="host r" style="--d:.7s">Mrs. Shiny Cherian &amp; Mr. Cherian Joseph<br>Elenjikkal House</p>
-        <p class="req r" style="--d:.95s">Request your gracious presence for the engagement ceremony of</p>
-        <h1 id="names" class="couple r" style="--d:1.2s">
-          <span class="n">Christina</span><span class="s">Cherian</span>
-          <span class="amp">&amp;</span>
-          <span class="n">Derick</span><span class="s">Mathew</span>
-        </h1>
-        <p class="son r" style="--d:1.5s">S/o. Mathew Thomas &amp; Tresa Mathew<br>Kappil Koipallil</p>
-        <div class="sep r" style="--d:1.7s" aria-hidden="true"></div>
-        <p class="date r" style="--d:1.9s"><span>Saturday,</span> <span>02 January 2027</span></p>
-      </div>
-      <img class="card__ribbon" src="assets/ribbon.webp" alt="" width="700" height="467">
-    </article>
-  </section>
 
-  <section class="events" aria-label="Event details">
-    <article class="panel r">
-      <img class="panel__frame" src="assets/frame.webp" alt="" loading="lazy" decoding="async" width="900" height="1125">
-      <div class="panel__in">
-        <h2>Engagement Ceremony</h2>
-        <p class="when">Saturday, 02 January 2027</p>
-        <p class="time">4:30 PM</p>
-        <p class="venue">St. Thomas Syro Malabar Church</p>
-        <p class="place">North Paravur</p>
-        <a class="btn btn--sm" href="https://www.google.com/maps/search/?api=1&amp;query=St.+Thomas+Syro+Malabar+Church+North+Paravur" target="_blank" rel="noopener">View on Google Maps</a>
+  <!-- ═════════════ 02 · MAIN INVITATION ═════════════ -->
+  <section class="page page--invite" id="invitation" aria-labelledby="names">
+    <div class="invite">
+      <!-- the opened envelope the card has just been drawn from (back layer, behind the card) -->
+      <div class="invite__env r" style="--d:.05s" aria-hidden="true"><i class="invite__flap"></i></div>
+      <article class="card r" style="--d:.2s">
+        <div class="card__paper"></div>
+        <div class="card__emboss"></div>
+        <div class="card__body">
+          <p class="host r" style="--d:.8s"><span>Mrs. Shiny Cherian &amp;</span> <span>Mr. Cherian Joseph</span><br>Elenjikkal House</p>
+          <p class="req r" style="--d:1.05s">Request your gracious presence for the engagement ceremony of</p>
+          <h1 id="names" class="couple r" style="--d:1.3s">
+            <span class="n">Christina</span><span class="s">Cherian</span>
+            <span class="amp">&amp;</span>
+            <span class="n">Derick</span><span class="s">Mathew</span>
+          </h1>
+          <p class="son r" style="--d:1.6s">S/o. Mathew Thomas &amp; Tresa Mathew<br>Kappil Koipallil</p>
+          <div class="sep r" style="--d:1.8s" aria-hidden="true"></div>
+          <p class="date r" style="--d:2s"><span>Saturday,</span> <span>02 January 2027</span></p>
+        </div>
+      </article>
+      <!-- envelope pocket + wax seal (front layer, in front of the card's lower edge) -->
+      <div class="invite__front r" style="--d:.35s" aria-hidden="true">
+        <i class="invite__pocket"></i>
+        <div class="seal"><img src="assets/images/seal.webp" alt="" width="480" height="439"><span class="seal__mono">C&amp;D</span></div>
       </div>
-    </article>
-    <article class="panel r">
-      <img class="panel__frame" src="assets/frame.webp" alt="" loading="lazy" decoding="async" width="900" height="1125">
-      <div class="panel__in">
-        <h2>Reception</h2>
-        <p class="when">Directly followed by reception</p>
-        <p class="time">6:30 PM</p>
-        <p class="venue">One Kochi</p>
-        <p class="place">Airport Road, Nedumbassery</p>
-        <a class="btn btn--sm" href="https://www.google.com/maps/search/?api=1&amp;query=One+Kochi+Airport+Road+Nedumbassery" target="_blank" rel="noopener">View on Google Maps</a>
-      </div>
-    </article>
-  </section>
-
-  <section class="dress" aria-label="Dress code">
-    <div class="tag r">
-      <img src="assets/tag.webp" alt="" loading="lazy" decoding="async" width="700" height="1050">
-      <div class="tag__txt"><p class="label">Dress Code</p><p class="code">Ethnic Elegance</p></div>
+      <img class="invite__bow" src="assets/images/ribbon.webp" alt="" width="700" height="467" decoding="async">
+      <img class="invite__orchids" src="assets/images/orchids.webp" alt="" width="760" height="832" decoding="async">
     </div>
   </section>
 
-  <footer class="closing">
-    <p class="wish r">With Best Compliments</p>
-    <p class="sig r" style="--d:.2s">Charles Cherian</p>
-    <nav class="tools r" style="--d:.4s" aria-label="Invitation actions">
-      <a id="share" class="link" href="https://wa.me/" target="_blank" rel="noopener">Share Invitation</a>
-      <button id="cal" class="link" type="button">Add to Calendar</button>
-      <button id="top" class="link" type="button">Back to Top</button>
-    </nav>
-    <img class="orchids" src="assets/orchids.webp" alt="" loading="lazy" decoding="async" width="760" height="831">
+  <!-- ═════════════ 03 · SAVE THE DATE ═════════════ -->
+  <section class="page page--std" id="save-the-date" aria-labelledby="std-title">
+    <div class="std r">
+      <div class="art">
+        <picture>
+          <source srcset="assets/images/save-the-date.webp" type="image/webp">
+          <img src="assets/images/save-the-date.png" alt="" width="941" height="1672" loading="lazy" decoding="async">
+        </picture>
+        <div class="std__paper">
+          <h2 id="std-title" class="std__label r" style="--d:.5s">Save the Dates</h2>
+          <div class="std__rule r" style="--d:.6s" aria-hidden="true"></div>
+          <a class="std__ev r" style="--d:.8s" href="#engagement">
+            <span class="std__d">02</span>
+            <span class="std__info">
+              <span class="std__what">Engagement</span>
+              <span class="std__md">January <span>2027</span></span>
+              <span class="std__wd">Saturday</span>
+            </span>
+          </a>
+          <div class="std__mid r" style="--d:.95s" aria-hidden="true"></div>
+          <a class="std__ev r" style="--d:1.1s" href="#wedding">
+            <span class="std__d">09</span>
+            <span class="std__info">
+              <span class="std__what">Holy Matrimony</span>
+              <span class="std__md">January <span class="wy is-set" data-wy>2027</span></span>
+              <span class="std__wd">Saturday</span>
+            </span>
+          </a>
+          <p class="std__names r" style="--d:1.35s">Christina <i>&amp;</i> Derick</p>
+        </div>
+      </div>
+      <div class="std__count r" style="--d:1.8s">
+        <p class="cd__for" id="cdFor">Until the Engagement</p>
+        <div class="cd" id="countdown" role="timer" aria-label="Time remaining until the engagement, 02 January 2027, 4:30 PM IST">
+          <div><b id="cdD">--</b><span>Days</span></div>
+          <div><b id="cdH">--</b><span>Hours</span></div>
+          <div><b id="cdM">--</b><span>Mins</span></div>
+          <div><b id="cdS">--</b><span>Secs</span></div>
+        </div>
+        <p class="cd__done" id="cdDone" hidden>The celebration has begun</p>
+        <div class="cal">
+          <p class="cal__lab">Add to Calendar</p>
+          <div class="cal__btns">
+            <button id="cal" class="btn btn--quiet" type="button" aria-label="Add the engagement to your calendar">Engagement</button>
+            <!-- shown automatically once CONFIG.wedding.year is confirmed in script.js -->
+            <button id="calWed" class="btn btn--quiet" type="button" aria-label="Add the holy matrimony to your calendar" hidden>Holy Matrimony</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═════════════ 04 · ENGAGEMENT CEREMONY ═════════════ -->
+  <section class="page page--eng" id="engagement" aria-labelledby="eng-title">
+    <div class="eng r">
+      <div class="eng__mat" aria-hidden="true"></div>
+      <div class="art">
+        <picture>
+          <source srcset="assets/images/event-frame.webp" type="image/webp">
+          <img src="assets/images/event-frame.png" alt="" width="1024" height="1536" loading="lazy" decoding="async">
+        </picture>
+        <div class="eng__in">
+          <h2 id="eng-title" class="r" style="--d:.5s">The Engagement<br>Ceremony</h2>
+          <div class="orn r" style="--d:.65s" aria-hidden="true"></div>
+          <p class="eng__dow r" style="--d:.8s">Saturday</p>
+          <p class="eng__date r" style="--d:.95s">02 January 2027</p>
+          <p class="eng__time r" style="--d:1.15s">4:30 PM</p>
+          <div class="orn r" style="--d:1.3s" aria-hidden="true"></div>
+          <p class="eng__venue r" style="--d:1.45s">St. Thomas Syro Malabar Church</p>
+          <p class="eng__place r" style="--d:1.55s">North Paravur, Kerala</p>
+          <a class="btn btn--gold r" style="--d:1.75s" data-map="engagement" target="_blank" rel="noopener"
+             href="https://www.google.com/maps/search/?api=1&amp;query=St.+Thomas+Syro+Malabar+Church+North+Paravur+Kerala">View Location</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═════════════ 05 · RECEPTION ═════════════ -->
+  <section class="page page--rec" id="reception" aria-labelledby="rec-title">
+    <div class="rec">
+      <div class="rec__env r" aria-hidden="true"><i class="rec__flap"></i></div>
+      <article class="rec__card r" style="--d:.25s">
+        <img class="rec__flourish" src="assets/images/botanical-flourish.webp" alt="" width="900" height="900" loading="lazy" decoding="async">
+        <div class="rec__in">
+          <p class="rec__over r" style="--d:.8s"><span>The Engagement</span> Directly followed by</p>
+          <h2 id="rec-title" class="rec__title r" style="--d:.95s" aria-label="Engagement reception">Reception</h2>
+          <div class="orn orn--sm r" style="--d:1.1s" aria-hidden="true"></div>
+          <p class="rec__dow r" style="--d:1.25s">Saturday</p>
+          <p class="rec__date r" style="--d:1.35s">02 January 2027</p>
+          <p class="rec__time r" style="--d:1.5s">6:30 PM</p>
+          <p class="rec__venue r" style="--d:1.7s">One Kochi</p>
+          <p class="rec__place r" style="--d:1.8s">Airport Road<br>Nedumbassery, Kerala</p>
+          <a class="btn btn--gold r" style="--d:2s" data-map="reception" target="_blank" rel="noopener"
+             href="https://www.google.com/maps/search/?api=1&amp;query=One+Kochi+Airport+Road+Nedumbassery+Kerala">View Location</a>
+        </div>
+      </article>
+      <img class="rec__orchids" src="assets/images/orchids.webp" alt="" width="760" height="832" loading="lazy" decoding="async">
+      <img class="rec__bow" src="assets/images/ribbon.webp" alt="" width="700" height="467" loading="lazy" decoding="async">
+    </div>
+  </section>
+
+  <!-- ═════════════ 06 · DRESS CODE ═════════════ -->
+  <section class="page page--dress" id="dress-code" aria-labelledby="dress-title">
+    <div class="tag r">
+      <img src="assets/images/dress-code-tag.webp" alt="" width="700" height="1050" loading="lazy" decoding="async">
+      <div class="tag__txt">
+        <p class="tag__for">The Engagement</p>
+        <h2 id="dress-title" class="label">Dress Code</h2>
+        <div class="tag__rule" aria-hidden="true"></div>
+        <p class="code">Ethnic Elegance</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═════════════════════════════════════════════════════════════
+       HOLY MATRIMONY — second celebration (W1 invitation · W2 ceremony
+       · W3 wedding reception). House-name spellings are kept exactly as
+       supplied (Koippallil / Elanjikkal) until the family confirms them.
+       ═════════════════════════════════════════════════════════════ -->
+
+  <!-- ═════════════ W1 · HOLY MATRIMONY INVITATION ═════════════ -->
+  <section class="page page--wed" id="wedding" aria-labelledby="wed-names">
+    <div class="wed">
+      <div class="wed__mat r" style="--d:.05s" aria-hidden="true"></div>
+      <article class="card card--wed r" style="--d:.2s">
+        <div class="card__paper"></div>
+        <div class="card__emboss"></div>
+        <div class="card__body">
+          <img class="wed__flourish r" style="--d:.55s" src="assets/images/botanical-flourish.webp" alt="" width="719" height="821" loading="lazy" decoding="async">
+          <p class="wed__kicker r" style="--d:.7s">Holy Matrimony</p>
+          <div class="sep sep--sm r" style="--d:.8s" aria-hidden="true"></div>
+          <p class="host r" style="--d:.9s"><span>Mrs. Tresa Mathew &amp;</span> <span>Mr. Mathew Thomas</span><br>Kappil Koippallil, Punnakunnam</p>
+          <p class="req r" style="--d:1.05s">Request your gracious presence in the holy matrimony of our Son</p>
+          <h2 id="wed-names" class="couple r" style="--d:1.3s">
+            <span class="n">Derick</span><span class="s">Mathew</span>
+            <span class="amp">&amp;</span>
+            <span class="n">Christina</span><span class="s">Cherian</span>
+          </h2>
+          <p class="son r" style="--d:1.6s">D/o. Cherian Joseph &amp; Shiny Cherian<br>Elanjikkal House, North Paravur</p>
+          <div class="sep r" style="--d:1.8s" aria-hidden="true"></div>
+          <p class="date r" style="--d:2s"><span>Saturday,</span> <span>9 January</span></p>
+          <p class="wed__year r" style="--d:2.1s"><span class="wy is-set" data-wy>2027</span></p>
+          <p class="wed__time r" style="--d:2.2s">2:30 PM</p>
+        </div>
+      </article>
+      <img class="wed__orchids" src="assets/images/orchids.webp" alt="" width="760" height="832" loading="lazy" decoding="async">
+      <img class="wed__bow" src="assets/images/ribbon.webp" alt="" width="700" height="467" loading="lazy" decoding="async">
+    </div>
+  </section>
+
+  <!-- ═════════════ W2 · HOLY MATRIMONY CEREMONY ═════════════ -->
+  <section class="page page--wcer" id="wedding-ceremony" aria-labelledby="wcer-title">
+    <div class="wcer r">
+      <div class="eng__mat" aria-hidden="true"></div>
+      <div class="art">
+        <img src="assets/images/frame-floral.webp" alt="" width="900" height="1125" loading="lazy" decoding="async">
+        <div class="wcer__in">
+          <p class="wcer__over r" style="--d:.4s">Christina <i>&amp;</i> Derick</p>
+          <h2 id="wcer-title" class="r" style="--d:.5s">The Holy<br>Matrimony</h2>
+          <div class="orn r" style="--d:.65s" aria-hidden="true"></div>
+          <p class="eng__dow r" style="--d:.8s">Saturday</p>
+          <p class="eng__date r" style="--d:.95s">9 January</p>
+          <p class="wcer__year r" style="--d:1.05s"><span class="wy is-set" data-wy>2027</span></p>
+          <p class="eng__time r" style="--d:1.15s">2:30 PM</p>
+          <div class="orn r" style="--d:1.3s" aria-hidden="true"></div>
+          <p class="eng__venue r" style="--d:1.45s">St. Joseph Syro Malabar Church</p>
+          <p class="eng__place r" style="--d:1.55s">Punnakunnam, Kuttanad<br>Alappuzha</p>
+          <a class="btn btn--gold r" style="--d:1.75s" data-map="wedding" target="_blank" rel="noopener"
+             href="https://www.google.com/maps/search/?api=1&amp;query=St.+Joseph+Syro+Malabar+Church+Punnakunnam+Kuttanad+Alappuzha">View Location</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═════════════ W3 · WEDDING RECEPTION (no time supplied — none shown) ═════════════ -->
+  <section class="page page--rec page--wrec" id="wedding-reception" aria-labelledby="wrec-title">
+    <div class="rec rec--wed">
+      <div class="rec__env r" aria-hidden="true"><i class="rec__flap"></i></div>
+      <article class="rec__card r" style="--d:.25s">
+        <img class="rec__flourish" src="assets/images/botanical-flourish.webp" alt="" width="900" height="900" loading="lazy" decoding="async">
+        <div class="rec__in">
+          <p class="rec__over r" style="--d:.8s"><span>Holy Matrimony</span> Wedding</p>
+          <h2 id="wrec-title" class="rec__title r" style="--d:.95s" aria-label="Wedding reception">Reception</h2>
+          <div class="orn orn--sm r" style="--d:1.1s" aria-hidden="true"></div>
+          <p class="rec__venue rec__venue--long r" style="--d:1.3s">Vijaya International Convention Centre</p>
+          <p class="rec__place r" style="--d:1.45s">Thiruvalla</p>
+          <a class="btn btn--gold r" style="--d:1.65s" data-map="weddingReception" target="_blank" rel="noopener"
+             href="https://www.google.com/maps/search/?api=1&amp;query=Vijaya+International+Convention+Centre+Thiruvalla">View Location</a>
+        </div>
+      </article>
+      <img class="rec__orchids" src="assets/images/orchids.webp" alt="" width="760" height="832" loading="lazy" decoding="async">
+      <img class="rec__bow" src="assets/images/ribbon.webp" alt="" width="700" height="467" loading="lazy" decoding="async">
+    </div>
+  </section>
+
+  <!-- ═════════════ 07 · CLOSING ═════════════ -->
+  <footer class="page page--close" id="closing">
+    <img class="close__orch close__orch--l" src="assets/images/orchids.webp" alt="" width="760" height="832" loading="lazy" decoding="async">
+    <img class="close__orch close__orch--r" src="assets/images/orchids.webp" alt="" width="760" height="832" loading="lazy" decoding="async">
+    <div class="close">
+      <div class="seal seal--lg r"><img src="assets/images/seal.webp" alt="" width="480" height="439" loading="lazy" decoding="async"><span class="seal__mono">C&amp;D</span></div>
+      <p class="wish r" style="--d:.2s">With Best Compliments</p>
+      <div class="comp">
+        <div class="comp__item r" style="--d:.35s">
+          <p class="comp__for">The Engagement</p>
+          <p class="sig">Charles Cherian</p>
+        </div>
+        <div class="comp__item r" style="--d:.5s">
+          <p class="comp__for">Holy Matrimony</p>
+          <p class="sig">Donna &amp; Joel</p>
+        </div>
+      </div>
+      <div class="sep r" style="--d:.65s" aria-hidden="true"></div>
+      <p class="close__names r" style="--d:.75s">Christina <i>&amp;</i> Derick</p>
+      <dl class="close__dates r" style="--d:.9s">
+        <div><dt>Engagement</dt><dd class="close__date">02 <b>·</b> 01 <b>·</b> 2027</dd></div>
+        <div><dt>Holy Matrimony</dt><dd class="close__date">09 <b>·</b> 01<span data-wy-tail> <b>·</b> 2027</span></dd></div>
+      </dl>
+      <nav class="tools r" style="--d:1.05s" aria-label="Invitation actions">
+        <button id="share" class="btn btn--quiet" type="button">Share Invitation</button>
+        <button id="top" class="btn btn--quiet" type="button">Back to Top</button>
+      </nav>
+    </div>
   </footer>
 </main>
+
+<!-- background music: starts on "Open Invitation" / "Skip Intro"; toggle with the button -->
+<audio id="music" src="assets/audio/a-thousand-years.mp3" preload="none" loop></audio>
+<button id="musicBtn" class="music" type="button" aria-pressed="false" aria-label="Play music" hidden>
+  <svg class="music__play" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18V6l10-2v12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="6.5" cy="18" r="2.5" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="16.5" cy="16" r="2.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+  <span class="music__bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+</button>
+
+<nav class="dots" aria-label="Invitation pages">
+  <a href="#invitation" aria-label="Invitation"></a>
+  <a href="#save-the-date" aria-label="Save the dates"></a>
+  <a href="#engagement" aria-label="Engagement ceremony"></a>
+  <a href="#reception" aria-label="Engagement reception"></a>
+  <a href="#dress-code" aria-label="Dress code"></a>
+  <a class="dots__gap" href="#wedding" aria-label="Holy Matrimony invitation"></a>
+  <a href="#wedding-ceremony" aria-label="Holy Matrimony ceremony"></a>
+  <a href="#wedding-reception" aria-label="Wedding reception"></a>
+  <a href="#closing" aria-label="Best compliments"></a>
+</nav>
 </body>
 </html>
